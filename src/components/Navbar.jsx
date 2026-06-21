@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiSun, HiMoon, HiMenu, HiX } from "react-icons/hi";
@@ -30,13 +29,13 @@ export default function Navbar() {
 
       let current = activeId;
 
-      for (const section of sections) {
+      sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
 
-        if (rect.top <= 120 && rect.bottom >= 120) {
+        if (rect.top <= 150 && rect.bottom >= 150) {
           current = section.id;
         }
-      }
+      });
 
       setActiveId(current);
     };
@@ -47,22 +46,40 @@ export default function Navbar() {
 
     handleScroll();
 
-    return () =>
+    return () => {
       window.removeEventListener("scroll", handleScroll);
+    };
   }, [activeId]);
 
   const scrollTo = (id) => {
-    document
-      .getElementById(id)
-      ?.scrollIntoView({ behavior: "smooth" });
+    const section = document.getElementById(id);
+
+    if (!section) return;
 
     setMobileOpen(false);
+
+    // Fixed navbar offset
+    const navbarOffset = 110;
+
+    const sectionPosition =
+      section.getBoundingClientRect().top +
+      window.pageYOffset;
+
+    const offsetPosition =
+      sectionPosition - navbarOffset;
+
+    setTimeout(() => {
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }, 100);
   };
 
   return (
     <nav
       className={`fixed top-4 left-1/2 -translate-x-1/2 z-50
-      w-[95%] max-w-7xl transition-all duration-500
+      w-[calc(100%-1rem)] sm:w-[95%] max-w-7xl transition-all duration-500
       ${
         scrolled
           ? "backdrop-blur-xl bg-white/10 dark:bg-black/20 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.15)] rounded-2xl"
@@ -72,15 +89,11 @@ export default function Navbar() {
       {/* Background Glow */}
       <div className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-r from-orange-500/10 via-transparent to-red-500/10 blur-xl" />
 
-      <div className="px-6 md:px-10 h-16 md:h-20 flex items-center justify-between">
+      <div className="px-4 sm:px-6 md:px-10 h-16 md:h-20 flex items-center justify-between">
         {/* Logo */}
         <motion.button
-          whileHover={{
-            scale: 1.08,
-          }}
-          whileTap={{
-            scale: 0.95,
-          }}
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.95 }}
           onClick={() => scrollTo("hero")}
           className="relative"
         >
@@ -157,7 +170,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() =>
-              setMobileOpen(!mobileOpen)
+              setMobileOpen((prev) => !prev)
             }
             className="
               md:hidden
@@ -230,4 +243,3 @@ export default function Navbar() {
     </nav>
   );
 }
-

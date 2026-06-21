@@ -7,8 +7,8 @@ import { motion } from 'framer-motion'
  */
 export default function SectionWrapper({ id, eyebrow, title, children, className = '' }) {
   return (
-    <section id={id} className={`py-20 md:py-28 px-6 md:px-12 lg:px-24 ${className}`}>
-      <div className="max-w-6xl mx-auto">
+    <section id={id} className={`py-20 md:py-28 px-5 sm:px-6 md:px-12 lg:px-24 overflow-hidden ${className}`}>
+      <div className="max-w-6xl mx-auto min-w-0">
         {(eyebrow || title) && (
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -23,7 +23,7 @@ export default function SectionWrapper({ id, eyebrow, title, children, className
               </p>
             )}
             {title && (
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">{title}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight break-words">{title}</h2>
             )}
           </motion.div>
         )}

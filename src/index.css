@@ -5,11 +5,13 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
     font-family: 'Inter', sans-serif;
     @apply text-ink dark:text-paper bg-paper dark:bg-ink;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4 {

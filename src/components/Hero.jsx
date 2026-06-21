@@ -18,11 +18,11 @@ document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
 
 return ( <section
    id="hero"
-   className="relative min-h-screen flex items-center px-6 md:px-12 lg:px-24 pt-24 overflow-hidden"
+   className="relative min-h-screen flex items-center px-5 sm:px-6 md:px-12 lg:px-24 pt-24 overflow-hidden"
  >
 {/* Background */} <div className="absolute inset-0 -z-10 bg-grid-light dark:bg-grid-dark opacity-50" /> <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-terracotta/10 blur-3xl animate-pulse -z-10" /> <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-gold/10 blur-3xl animate-pulse -z-10" />
 
-  <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-10 items-center">
+  <div className="max-w-7xl mx-auto w-full min-w-0 grid md:grid-cols-2 gap-10 items-center">
 
     {/* LEFT */}
     <div>
@@ -34,7 +34,7 @@ return ( <section
         Hi, I'm <span className="text-terracotta">{profile.name}</span>
       </h1>
 
-      <div className="mt-4 text-xl md:text-2xl text-gray-600 dark:text-gray-300">
+      <div className="mt-4 min-h-8 text-xl md:text-2xl text-gray-600 dark:text-gray-300 break-words">
         {typed}
         <span className="inline-block w-[2px] h-6 bg-terracotta ml-1 animate-blink" />
       </div>
@@ -77,7 +77,7 @@ return ( <section
      <img
   src={profileImg}
   alt="profile"
-  className="w-80 h-80 object-cover object-[center_30%] rounded-full border-4 border-terracotta shadow-lg"
+  className="w-64 h-64 sm:w-80 sm:h-80 max-w-full object-cover object-[center_30%] rounded-full border-4 border-terracotta shadow-lg"
 />
     </motion.div>
   </div>

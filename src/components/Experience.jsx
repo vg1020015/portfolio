@@ -15,7 +15,7 @@ export default function Experience() {
       eyebrow="career_story_mode"
       title="My Journey in Motion"
     >
-      <div className="relative">
+      <div className="relative overflow-hidden">
 
         {/* ambient glow */}
         <div className="absolute inset-0 -z-10">
@@ -34,10 +34,10 @@ export default function Experience() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               className={`
-                relative p-8 rounded-3xl border transition-all duration-500 backdrop-blur-xl
+                relative p-5 sm:p-8 rounded-3xl border transition-all duration-500 backdrop-blur-xl overflow-hidden
                 ${
                   idx === 0
-                    ? "bg-white/10 border-orange-500/30 scale-[1.02] shadow-[0_0_60px_rgba(249,115,22,0.2)]"
+                    ? "bg-white/10 border-orange-500/30 sm:scale-[1.02] shadow-[0_0_60px_rgba(249,115,22,0.2)]"
                     : "bg-white/5 border-white/10 opacity-90"
                 }
               `}
@@ -47,7 +47,7 @@ export default function Experience() {
               <div className="absolute -left-3 top-8 w-3 h-3 rounded-full bg-orange-500 shadow-[0_0_20px_rgba(249,115,22,0.8)]" />
 
               {/* top row */}
-              <div className="flex items-center justify-between">
+              <div className="flex flex-wrap items-center justify-between gap-2">
                 <p className="text-xs text-orange-500 font-medium">
                   {job.duration}
                 </p>
@@ -63,7 +63,7 @@ export default function Experience() {
                 {job.role}
               </h3>
 
-              <p className="text-sm text-gray-500 mb-4">
+                <p className="text-sm text-gray-500 mb-4 break-words">
                 {job.company} • {job.location}
               </p>
 
@@ -72,7 +72,7 @@ export default function Experience() {
                 {job.points.map((point, i) => (
                   <li
                     key={i}
-                    className="text-sm text-gray-600 dark:text-gray-300"
+                    className="text-sm text-gray-600 dark:text-gray-300 break-words"
                   >
                     • {point}
                   </li>

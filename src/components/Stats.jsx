@@ -36,21 +36,41 @@ function StatItem({ label, value, suffix, isVisible }) {
     <div
       className="
         text-center
-        p-6
+        p-4 sm:p-6
         rounded-2xl
         backdrop-blur-xl
         bg-white/5
         border border-white/10
         shadow-[0_8px_40px_rgba(0,0,0,0.15)]
-        hover:scale-105 transition
+        hover:scale-[1.02]
+        transition-all duration-300
+        overflow-hidden
+        min-w-0
       "
     >
-      <p className="font-display text-4xl md:text-5xl font-bold text-terracotta">
+      <p
+        className="
+          font-display
+          text-3xl sm:text-4xl md:text-5xl
+          font-bold
+          text-terracotta
+          break-words
+        "
+      >
         {count}
         <span className="text-gold">{suffix}</span>
       </p>
 
-      <p className="mt-3 text-xs md:text-sm tracking-wide text-ink/60 dark:text-paper/60 uppercase">
+      <p
+        className="
+          mt-3
+          text-[10px] sm:text-xs md:text-sm
+          tracking-wide
+          text-ink/60 dark:text-paper/60
+          uppercase
+          break-words
+        "
+      >
         {label}
       </p>
     </div>
@@ -67,16 +87,47 @@ export default function Stats() {
       title="Results That Matter"
       className="bg-paper-surface dark:bg-ink-surface"
     >
-      <div ref={ref} className="relative">
-
+      <div
+        ref={ref}
+        className="
+          relative
+          w-full
+          overflow-hidden
+        "
+      >
         {/* Background Glow */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-10 left-1/3 w-80 h-80 bg-orange-500/10 blur-[150px]" />
-          <div className="absolute bottom-10 right-1/3 w-80 h-80 bg-yellow-500/10 blur-[150px]" />
+        <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+          <div
+            className="
+              absolute
+              top-10
+              left-1/2
+              -translate-x-1/2
+              w-56 h-56
+              md:w-80 md:h-80
+              bg-orange-500/10
+              blur-[80px]
+              md:blur-[150px]
+            "
+          />
+
+          <div
+            className="
+              absolute
+              bottom-10
+              left-1/2
+              -translate-x-1/2
+              w-56 h-56
+              md:w-80 md:h-80
+              bg-yellow-500/10
+              blur-[80px]
+              md:blur-[150px]
+            "
+          />
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {STATS.map((stat) => (
             <StatItem
               key={stat.label}
@@ -85,7 +136,6 @@ export default function Stats() {
             />
           ))}
         </div>
-
       </div>
     </SectionWrapper>
   );

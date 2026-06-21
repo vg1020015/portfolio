@@ -45,7 +45,7 @@ export default function About() {
         <div className="absolute top-0 left-0 w-72 h-72 bg-orange-500/10 blur-[120px]" />
         <div className="absolute right-0 bottom-0 w-72 h-72 bg-yellow-500/10 blur-[120px]" />
 
-        <div className="grid lg:grid-cols-[380px_1fr] gap-16 items-center">
+        <div className="grid lg:grid-cols-[380px_1fr] gap-12 lg:gap-16 items-center min-w-0">
 
           {/* LEFT IMAGE (FIXED MOBILE STABILITY) */}
           <motion.div
@@ -53,7 +53,7 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.6 }}
-            className="relative mx-auto overflow-hidden will-change-transform"
+            className="relative mx-auto max-w-full overflow-hidden will-change-transform"
           >
             {/* Glow */}
             <div className="absolute inset-0 rounded-[32px] bg-gradient-to-r from-orange-500 via-yellow-400 to-red-500 blur-3xl opacity-30" />
@@ -86,7 +86,7 @@ export default function About() {
                 src={aboutImg}
                 alt={profile.name}
                 className="
-                  w-[340px]
+                  w-[min(340px,100%)]
                   max-w-full
                   h-[420px]
                   object-cover
@@ -149,7 +149,7 @@ export default function About() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 mt-10">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10">
               {STATS.map((stat) => (
                 <motion.div
                   key={stat.label}

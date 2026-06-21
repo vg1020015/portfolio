@@ -53,7 +53,7 @@ export default function Contact() {
       eyebrow="contact"
       title="Let’s work together"
     >
-      <div className="grid md:grid-cols-2 gap-12 items-start">
+      <div className="grid md:grid-cols-2 gap-12 items-start min-w-0">
 
         {/* LEFT SIDE */}
         <div className="space-y-6">
@@ -67,19 +67,19 @@ export default function Contact() {
 
             <a
               href={`mailto:${profile.email}`}
-              className="flex items-center gap-3 text-sm hover:text-terracotta transition"
+              className="flex min-w-0 items-center gap-3 text-sm hover:text-terracotta transition"
             >
-              <HiOutlineMail className="text-lg" />
-              {profile.email}
+              <HiOutlineMail className="text-lg shrink-0" />
+              <span className="min-w-0 break-all">{profile.email}</span>
             </a>
 
             <a
               href={profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 text-sm hover:text-terracotta transition"
+              className="flex min-w-0 items-center gap-3 text-sm hover:text-terracotta transition"
             >
-              <FaLinkedin className="text-lg" />
+              <FaLinkedin className="text-lg shrink-0" />
               LinkedIn
             </a>
 
